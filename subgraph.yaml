@@ -1,0 +1,30 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Yfi
+    network: mainnet
+    source:
+      address: "0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e"
+      abi: Yfi
+      startBlock: 10475744 
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - Transfer
+        - Approve
+        - Trans
+
+      abis:
+        - name: Yfi
+          file: ./abis/Yfi.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/mapping.ts

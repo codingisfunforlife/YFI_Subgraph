@@ -1,0 +1,15 @@
+type Trans @entity {
+  id: ID!
+  value: BigInt!
+  from: Bytes!
+  to: Bytes!
+  timestamp: BigInt
+}
+
+type Approve @entity {
+  id: ID!
+  value: BigInt!
+  owner: Bytes!
+  spender: Bytes!
+  timestamp: BigInt
+}
